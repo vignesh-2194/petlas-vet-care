@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0F766E;
+  --color-secondary: #14B8A6;
+  --color-accent: #F59E0B;
+  --color-custom-bg: #F8FAFC;
+  --color-custom-text: #1E293B;
+  
+  --shadow-premium: 0 20px 50px -12px rgba(15, 118, 110, 0.08);
+  --shadow-glass: inset 0 1px 1px 0 rgba(255, 255, 255, 0.3), 0 12px 40px -4px rgba(15, 118, 110, 0.05);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-custom-bg);
+    color: var(--color-custom-text);
+    font-family: 'Inter', sans-serif;
+  }
+}
