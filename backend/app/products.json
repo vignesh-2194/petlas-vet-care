@@ -1,0 +1,29 @@
+[
+    {
+        "id": "prod_001",
+        "name": "Advanced Renal Care Supplement",
+        "category": "Therapeutics",
+        "price": 84.5,
+        "description": "Molecular kidney stabilization support formula designed for geriatric felines and canines.",
+        "imageUrl": "https://unsplash.com",
+        "availability": "Available"
+    },
+    {
+        "id": "prod_002",
+        "name": "Hydrolyzed Hypoallergenic Protein Food",
+        "category": "Clinical Nutrition",
+        "price": 110.0,
+        "description": "Premium pure micro-protein specialized diet to treat critical dermatological gut inflammation.",
+        "imageUrl": "https://unsplash.com",
+        "availability": "Available"
+    },
+    {
+        "id": "prod_003",
+        "name": "Multi-Core Bio-Immune Booster",
+        "category": "Supplements",
+        "price": 45.0,
+        "description": "Cellular recovery extract drops mapping trace elements to accelerate bone marrow repair pathways.",
+        "imageUrl": "https://unsplash.com",
+        "availability": "Available"
+    }
+]
