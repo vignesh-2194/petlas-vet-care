@@ -60,8 +60,12 @@ export const AdminDashboard: React.FC = () => {
         setLoading(true);
         Promise.all([
             // 🟢 Update lines 62 and 63 to use the numerical address string:
-            axios.get('http://localhost:8000/api/appointments'),
-            axios.get('http://localhost:8000/api/products')
+            //axios.get('http://localhost:8000/api/appointments'),
+            axios.get('https://petlas-vet-care.onrender.com'),
+
+           // axios.get('http://localhost:8000/api/products')
+            axios.get('https://petlas-vet-care.onrender.com')
+
 
 
         ]).then(([apptRes, prodRes]) => {
