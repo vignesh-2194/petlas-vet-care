@@ -68,7 +68,8 @@ export const MedicalStore: React.FC = () => {
             setLoading(true);
             setError(null);
 
-            const response = await axios.get("http://127.0.0.1:8000/api/products");
+            const response = await axios.get("http://localhost:8000/api/products");
+
 
 
             // Ensure the response data is a valid array before mounting to state
