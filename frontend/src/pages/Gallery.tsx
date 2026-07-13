@@ -47,6 +47,25 @@ export const Gallery: React.FC = () => {
     }
   };
 
+  const handleDeleteMemory = async (memoryId: string) => {
+  if (!window.confirm("Are you sure you want to permanently delete this clinic memory card?")) return;
+
+  try {
+    // FIX: Using template literals (${memoryId}) with backticks to inject the actual unique ID string
+    const res = await axios.delete(`http://localhost:8000/api/memories/${memoryId}`);
+
+    if (res.status === 200) {
+      alert("Memory card deleted successfully!");
+      fetchMemories(); // Refreshes the workspace grid seamlessly
+    }
+  } catch (err) {
+    console.error("Failed to delete memory node:", err);
+    alert("Error deleting item from live database pipeline.");
+  }
+};
+
+
+
   useEffect(() => {
     fetchMemories();
   }, []);
@@ -176,7 +195,10 @@ export const Gallery: React.FC = () => {
         {loading ? <div className="text-center text-xs font-mono text-slate-400 py-12 animate-pulse">Streaming visual collections...</div> : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {memories.map((m) => (
-              <div key={m.id} className="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between">
+               <div key={(m as any)._id || m.id || Math.random().toString()} className="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between relative">
+
+
+
                 <div>
                   <img src={m.imageUrl} alt="Memory Snapshot" className="w-full h-44 object-cover" />
                   <div className="p-4 space-y-2">
@@ -193,6 +215,22 @@ export const Gallery: React.FC = () => {
                     <h4 className="font-bold text-slate-900 text-sm">{m.title}</h4>
                     <p className="text-xs text-slate-500 leading-relaxed bg-slate-50 p-2.5 rounded-xl border border-slate-100/50">"{m.reviewText}"</p>
                     <span className="text-[10px] text-slate-400 font-medium block">Shared by: <span className="font-bold text-slate-600">{m.authorName}</span></span>
+                                  {/* 🔒 Security Check: Renders button if explicitly inside admin gateway components */}
+          {(window.location.pathname.includes("dashboard") || 
+            window.location.pathname.includes("admin") || 
+            document.querySelector(".PETLA-ADMIN-HUB") !== null) && (
+            <button
+              type="button"
+              onClick={() => handleDeleteMemory((m as any)._id || (m as any).id)}
+
+
+
+              className="mt-3 w-full py-1.5 bg-rose-50 text-rose-600 hover:bg-rose-600 hover:text-white rounded-xl text-xs font-bold transition-all border border-rose-100/50 text-center"
+            >
+              Remove This Memory Block
+            </button>
+          )}
+
                   </div>
                 </div>
 

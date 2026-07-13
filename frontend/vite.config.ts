@@ -13,7 +13,9 @@ export default defineConfig({
     strictPort: true,
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:8000',
+        // Clear your old 'http://127.0.0.1:8000' target and replace it with this word format:
+       target: 'http://localhost:8000',
+
         changeOrigin: true,
         secure: false,
         ws: true,
