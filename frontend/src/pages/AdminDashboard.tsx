@@ -58,22 +58,18 @@ export const AdminDashboard: React.FC = () => {
     }, []);
     const loadConsoleData = () => {
         setLoading(true);
-        Promise.all([
-            // 🟢 Update lines 62 and 63 to use the numerical address string:
-            //axios.get('http://localhost:8000/api/appointments'),
-            axios.get('https://petlas-vet-care.onrender.com'),
-
-           // axios.get('http://localhost:8000/api/products')
-            axios.get('https://petlas-vet-care.onrender.com')
-
-
-
+               Promise.all([
+            axios.get('https://onrender.com'),
+            axios.get('https://onrender.com')
         ]).then(([apptRes, prodRes]) => {
             setAppointments(apptRes.data);
             setProducts(prodRes.data);
-        })
-            .catch(err => console.error("Error connecting to operations streams:", err))
-            .finally(() => setLoading(false));
+        }).catch(err => {
+            console.error("Error connecting to operations streams:", err);
+        }).finally(() => {
+            setLoading(false);
+        });
+
     };
 
     useEffect(() => {
