@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL || 'https://petlas-vet-care.onrender.com';
+
+
 export const Appointment: React.FC = () => {
   // Input fields hook states management alignment mapping
   const [customerName, setCustomerName] = useState('');
@@ -42,7 +45,8 @@ export const Appointment: React.FC = () => {
     };
 
     try {
-      await axios.post('/api/appointments', appointmentPayload);
+      await axios.post(`${BASE_URL}/api/appointments`, appointmentPayload);
+
       setBannerMessage({ type: 'success', text: '🎉 Intake record submitted successfully! Check Admin Hub dashboard matrix.' });
       // Reset input layout values fields
       setCustomerName('');
