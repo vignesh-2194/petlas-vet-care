@@ -100,7 +100,10 @@ export const AppLayout: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex items-center gap-2 text-white">
                         <PawPrint size={16} className="text-[#14B8A6]" fill="currentColor" />
-                        <span className="font-bold tracking-tight text-sm">Petla's Vet Care Specialty Hospital Group</span>
+                        <span className="font-bold text-xs sm:text-sm md:text-xl text-teal-900 tracking-tight whitespace-nowrap">
+                            Petla's Vet Care
+                        </span>
+
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center gap-6">
