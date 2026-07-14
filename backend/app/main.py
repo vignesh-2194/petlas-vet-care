@@ -248,3 +248,14 @@ async def remove_catalog_product(product_id: str):
 @app.get("/")
 async def root_ping():
     return {"status": "Online", "database": "All Collections Fully Synced Stream Channels Active."}
+
+@app.post("/api/admin/login")
+async def admin_login(payload: dict):
+    username = payload.get("username")
+    password = payload.get("password")
+
+    # This checks your input text straight against your desired dashboard credentials
+    if username == "petlas_vet_care" and password == "vignesh2194":
+        return {"success": True, "message": "Access Matrix Initialized Successfully."}
+
+    raise HTTPException(status_code=401, detail="Invalid administrative username identifier or security passcode mapping.")
