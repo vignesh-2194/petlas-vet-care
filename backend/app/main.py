@@ -19,7 +19,7 @@ from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from bson import ObjectId
-from backend.app.models.domain_models import ProductDocument, AppointmentDocument
+from app.models.domain_models import ProductDocument, AppointmentDocument
 
 app = FastAPI(title="Petla's Vet Care Unified Live Cloud Engine", version="21.0.0")
 
