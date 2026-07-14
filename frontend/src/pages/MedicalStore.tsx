@@ -12,7 +12,9 @@ import {
 // ==========================================
 // 1. DATA INTERFACES & CONFIG
 // ==========================================
-const BASE_URL = process.env.VITE_API_URL || 'https://petlas-vet-care.onrender.com';
+const BASE_URL = import.meta.env.VITE_BASE_URL || 'https://petlas-vet-care.onrender.com';
+
+
 
 
 export interface Product {

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, ShoppingBag, Upload, LogOut, Trash2 } from 'lucide-react';
 import axios from 'axios';
 import { Gallery } from "./Gallery";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL || 'https://petlas-vet-care.onrender.com';
+
 interface AppointmentRecord {
     id: string;
     _id?: string;
@@ -58,9 +61,10 @@ export const AdminDashboard: React.FC = () => {
     }, []);
     const loadConsoleData = () => {
         setLoading(true);
-               Promise.all([
-            axios.get('https://onrender.com'),
-            axios.get('https://onrender.com')
+        Promise.all([
+            axios.get(`${BASE_URL}/api/appointments`),
+            axios.get(`${BASE_URL}/api/products`)
+
         ]).then(([apptRes, prodRes]) => {
             setAppointments(apptRes.data);
             setProducts(prodRes.data);
