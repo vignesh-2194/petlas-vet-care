@@ -55,7 +55,8 @@ export const AppLayout: React.FC = () => {
                         })}
                     </div>
 
-                    <div className="hidden xl:flex items-center gap-4">
+                    <div className="flex items-center space-x-2 sm:space-x-4">
+
                         <Link to="/login" className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-[#0F766E] transition-colors px-3">
                             Admin Gateway
                         </Link>
