@@ -12,6 +12,8 @@ import {
 // ==========================================
 // 1. DATA INTERFACES & CONFIG
 // ==========================================
+const BASE_URL = process.env.VITE_API_URL || 'https://petlas-vet-care.onrender.com';
+
 
 export interface Product {
     _id: string;
@@ -68,7 +70,8 @@ export const MedicalStore: React.FC = () => {
             setLoading(true);
             setError(null);
 
-            const response = await axios.get("{import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/products");
+            const response = await axios.get(`${BASE_URL}/api/products`);
+
 
 
 
@@ -147,7 +150,7 @@ export const MedicalStore: React.FC = () => {
 
             // 🌟 FIX: We use the safe 'productId' variable in the URL below
             const res = await axios.put(
-                `http://127.0.0{productId}`,
+                `${BASE_URL}/api/products/${productId}`,
                 payload
             );
 
