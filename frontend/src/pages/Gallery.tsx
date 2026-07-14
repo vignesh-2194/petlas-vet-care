@@ -38,7 +38,7 @@ export const Gallery: React.FC = () => {
 
   const fetchMemories = async () => {
     try {
-      const res = await axios.get('http://localhost:8000/api/memories');
+      const res = await axios.get('{import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/memories');
       setMemories(res.data);
     } catch (err) {
       console.error("Error loading memories stream:", err);
@@ -52,7 +52,7 @@ export const Gallery: React.FC = () => {
 
   try {
     // FIX: Using template literals (${memoryId}) with backticks to inject the actual unique ID string
-    const res = await axios.delete(`http://localhost:8000/api/memories/${memoryId}`);
+    const res = await axios.delete(`{import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/memories/${memoryId}`);
 
     if (res.status === 200) {
       alert("Memory card deleted successfully!");
@@ -97,7 +97,7 @@ export const Gallery: React.FC = () => {
     };
 
     try {
-      await axios.post('http://localhost:8000/api/memories', payload);
+      await axios.post('{import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/memories', payload);
       alert("✨ Memory space cataloged directly to cloud pipeline!");
       setTitle('');
       setAuthorName('');
@@ -116,7 +116,7 @@ export const Gallery: React.FC = () => {
     if (!text) return alert("Write your text confirmation before posting comment.");
 
     try {
-      await axios.post(`http://localhost:8000/api/memories/${memoryId}/comments`, { author, text });
+      await axios.post(`{import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/memories/${memoryId}/comments`, { author, text });
       setActiveCommentText(prev => ({ ...prev, [memoryId]: '' }));
       setCommentAuthor('');
       fetchMemories();

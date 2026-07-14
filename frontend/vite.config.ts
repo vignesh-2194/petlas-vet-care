@@ -7,19 +7,18 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
-  server: {
+    server: {
     host: '127.0.0.1',
     port: 5173,
     strictPort: true,
     proxy: {
       '/api': {
-        // Clear your old 'http://127.0.0.1:8000' target and replace it with this word format:
-       target: 'http://localhost:8000',
-
+        target: 'https://petlas-vet-care.onrender.com',
         changeOrigin: true,
         secure: false,
         ws: true,
       },
     },
-  },
+  }
+
 })

@@ -133,7 +133,7 @@ export const AdminDashboard: React.FC = () => {
         };
 
         try {
-            await axios.post('http://localhost:8000/api/products', productPayload);
+            await axios.post('{import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/products', productPayload);
             alert("🎉 Product uploaded and saved directly to the database successfully!");
             setNewProdName('');
             setNewProdPrice('');
@@ -150,7 +150,7 @@ export const AdminDashboard: React.FC = () => {
         if (!window.confirm("Are you sure you want to remove this item from the store inventory?")) return;
 
         try {
-            await axios.delete(`http://localhost:8000/api/products/${productId}`);
+            await axios.delete(`{import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/products/${productId}`);
             alert("🗑️ Product successfully deleted from database storage!");
             loadConsoleData();
         } catch (err) {
@@ -183,7 +183,7 @@ export const AdminDashboard: React.FC = () => {
         };
 
         try {
-            await axios.put(`http://localhost:8000/api/products/${productId}`, updatedPayload);
+            await axios.put(`{import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/products/${productId}`, updatedPayload);
             alert("✏️ Product variations successfully updated in database storage!");
             setEditingProductId(null);
             loadConsoleData();
@@ -195,7 +195,7 @@ export const AdminDashboard: React.FC = () => {
 
     const handleUpdateStatus = async (appointmentId: string, newStatus: string) => {
         try {
-            await axios.patch(`http://localhost:8000/api/appointments/${appointmentId}`, { status: newStatus });
+            await axios.patch(`{import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/appointments/${appointmentId}`, { status: newStatus });
             alert(`Pipeline status successfully changed to ${newStatus}!`);
             loadConsoleData();
         } catch (err) {
